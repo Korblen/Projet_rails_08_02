@@ -13,13 +13,12 @@ cities.each do |name|
   City.create!(name: name)
 end
 
-# Créer des spécialités
 specialties = ["Cardiologie", "Dermatologie", "Pédiatrie", "Neurologie"]
 specialties.each do |name|
   Specialty.create!(name: name)
 end
 
-# Créer des docteurs
+
 10.times do
   Doctor.create!(
     first_name: Faker::Name.first_name,
@@ -29,7 +28,6 @@ end
   )
 end
 
-# Créer des patients
 20.times do
   Patient.create!(
     first_name: Faker::Name.first_name,
@@ -38,13 +36,11 @@ end
   )
 end
 
-# Assigner des spécialités aux docteurs
 Doctor.all.each do |doctor|
   specialties_sample = Specialty.order("RANDOM()").limit(rand(1..3))
   doctor.specialties << specialties_sample
 end
 
-# Créer des rendez-vous
 50.times do
   Appointment.create!(
     date: Faker::Time.forward(days: 23, period: :day),
@@ -54,4 +50,4 @@ end
   )
 end
 
-puts "Données générées avec succès !"
+puts "c'est fait !"
